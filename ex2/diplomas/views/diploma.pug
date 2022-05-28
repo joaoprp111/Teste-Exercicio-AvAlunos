@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1 Página do diploma #{diploma.numero}
+  .w3-container(style='margin-top: 35px;')
+        ul.w3-ul
+            li Data: #{diploma.data}
+            li Sumário: #{diploma.sumario}
+            li Link:
+                a(href=diploma.link)= diploma.link
+            li Estado: #{diploma.estado}
+            if entidades.length > 0
+                li Entidades responsáveis pela sua publicação: 
+                    ul
+                        each e in entidades
+                            li
+                                a(href="https://clav.dglab.gov.pt/entidades/" + e.id)= e.sigla
+            if processos.length > 0
+                li Processos que regula: 
+                    ul 
+                        each p in processos
+                            li
+                                a(href="https://clav.dglab.gov.pt/classes/consultar/" + p.id) Código: #{p.codigo} | Título: #{p.titulo}

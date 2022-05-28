@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1 Lista de diplomas
+  p Número de diplomas catalogados: #{tamanho}
+
+  .w3-container(style='margin-top: 35px;')
+        table.w3-text-black.w3-table.w3-bordered.w3-striped.w3-centered.w3-large
+            tr
+                th Data
+                th Tipo
+                th Número 
+                th Sumário
+            each d in diplomas
+                tr
+                    td= d.data
+                    td= d.tipo
+                    td
+                      a(href="/diplomas?id=" + d.id)= d.numero 
+                    td= d.sumario
